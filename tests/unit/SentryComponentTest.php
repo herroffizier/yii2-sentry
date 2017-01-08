@@ -74,12 +74,11 @@ class SentryComponentTest extends \yii\codeception\TestCase
         $this->assertEquals($expected, $component->environment);
         $this->assertInstanceOf('mito\sentry\tests\unit\DummyRavenClient', $component->client);
         if (!empty($environment)) {
-            $this->assertArrayHasKey('tags', $component->options);
-            $this->assertArrayHasKey('tags', $component->jsOptions);
-            $this->assertArrayHasKey('environment', $component->client->tags);
-            $this->assertEquals($expected, $component->options['tags']['environment']);
-            $this->assertEquals($expected, $component->jsOptions['tags']['environment']);
-            $this->assertEquals($expected, $component->client->tags['environment']);
+            $this->assertArrayHasKey('environment', $component->options);
+            $this->assertArrayHasKey('environment', $component->jsOptions);
+            $this->assertEquals($expected, $component->options['environment']);
+            $this->assertEquals($expected, $component->jsOptions['environment']);
+            $this->assertEquals($expected, $component->client->environment);
         }
     }
 
@@ -99,8 +98,7 @@ class SentryComponentTest extends \yii\codeception\TestCase
         $this->assertEquals(self::PRIVATE_DSN, $component->client->dsn);
         $this->assertArrayHasKey('test', $component->client->tags);
         $this->assertEquals('value', $component->client->tags['test']);
-        $this->assertArrayHasKey('environment', $component->client->tags);
-        $this->assertEquals('development', $component->client->tags['environment']);
+        $this->assertEquals('development', $component->client->environment);
         $this->assertEquals($component->client, $component->getClient());
     }
 

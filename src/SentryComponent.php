@@ -126,10 +126,10 @@ class SentryComponent extends Component
         }
 
         if (is_array($this->client)) {
-            $this->client['tags']['environment'] = $this->environment;
+            $this->client['environment'] = $this->environment;
         }
-        $this->options['tags']['environment'] = $this->environment;
-        $this->jsOptions['tags']['environment'] = $this->environment;
+        $this->options['environment'] = $this->environment;
+        $this->jsOptions['environment'] = $this->environment;
     }
 
     /**
