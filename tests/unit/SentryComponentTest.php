@@ -127,6 +127,7 @@ class SentryComponentTest extends \yii\codeception\TestCase
         $raven->shouldReceive('captureMessage')->with($message, $params, $level, $stack, $vars)->atLeast()->once();
         $raven->shouldReceive('captureException')->with($exception, $data, $logger, $vars)->atLeast()->once();
         $raven->shouldReceive('capture')->with($data, $stack, $vars)->atLeast()->once();
+        $raven->shouldReceive('close_curl_resource');
 
         $component->captureMessage($message, $params, $level, $stack, $vars);
         $component->captureException($exception, $data, $logger, $vars);
